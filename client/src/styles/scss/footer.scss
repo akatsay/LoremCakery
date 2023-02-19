@@ -1,0 +1,52 @@
+footer {
+    margin-top: auto;
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $hdcl-2;
+    color: white;
+    
+    & .footer-block {
+        margin: 10px;
+        & .address {
+            font-style: italic;
+            color: $bgcl;
+            margin-top: 5px;
+        }
+        & .contact-link {
+            display: block;
+            margin: 10px;
+            color: $peach;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        & .fa {
+            cursor: pointer;
+            font-size: 2rem;
+            margin: 15px;
+            transition: transform 0.2s ease-in-out;
+            color: $peach;
+            &:hover {
+                transform: scale(1.5)
+            }
+        }
+    }
+}
+
+@media (min-width: 420px) {
+    footer {
+        flex-direction: row;
+    }
+}
+
+@media (min-width: 380px) {
+    footer {
+        flex-direction: row;
+    }
+}

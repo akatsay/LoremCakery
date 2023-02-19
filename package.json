@@ -1,0 +1,36 @@
+{
+  "name": "loremcakery",
+  "version": "1.0.0",
+  "description": "Lorem Cakery landing page",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon app.js",
+    "start": "cross-env NODE_ENV=production node app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akatsay/LoremCakery.git"
+  },
+  "author": "Alexandr Katsay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akatsay/LoremCakery/issues"
+  },
+  "homepage": "https://github.com/akatsay/LoremCakery#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.20"
+  }
+}

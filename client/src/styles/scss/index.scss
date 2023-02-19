@@ -1,0 +1,37 @@
+$hdcl: #201D35;
+$hdcl-2: #2C2541;
+$bgcl: #A5968D;
+$ctcl: #CCB58E;
+$peach: #FFE4AD;
+$cambridge-blue: #8BA796;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Jost&family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap');
+@import "./nullifier.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "about.scss";
+@import "contact.scss";
+@import "contactModal.scss";
+
+* {
+    font-family: 'Fragment Mono', monospace;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+    background-color: $bgcl;
+    overflow-x: hidden;
+
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100vw;
+}
