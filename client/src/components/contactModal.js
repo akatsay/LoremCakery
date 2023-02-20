@@ -1,6 +1,8 @@
 import React from "react";
 import {AnimatePresence, motion} from "framer-motion"
 
+import { ContactForm } from "./contactForm";
+
 export const ContactModal = ({open, onClose}) => {
 
     return (
@@ -21,6 +23,9 @@ export const ContactModal = ({open, onClose}) => {
                     }}
                     className='modal-container'
                     >
+                        <h2 className="title">Email inquiry</h2>
+
+                        <ContactForm />
 
                     </div>
             </motion.div>

@@ -74,7 +74,7 @@
         & .dropdown-menu {
             position: absolute;
             top: 65px;
-            right: -270px;
+            right: -290px;
             margin: 0;
             padding: 1rem;
             text-align: center;
@@ -85,10 +85,10 @@
             z-index: 1;
             transition: transform 0.3s ease-in-out;
             &.show {
-                transform: translateX(-285px);
+                transform: translateX(-305px);
             }
             & .menu-item {
-                margin: 0.5rem;
+                margin: 1.5rem;
                 position: relative;
                 cursor: pointer;
                 transition: all 1s ease-in-out;

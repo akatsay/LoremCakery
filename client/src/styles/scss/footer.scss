@@ -39,13 +39,7 @@ footer {
     }
 }
 
-@media (min-width: 420px) {
-    footer {
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 380px) {
+@media (min-width: 450px) {
     footer {
         flex-direction: row;
     }
