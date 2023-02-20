@@ -9,24 +9,6 @@
     justify-content: center;
     align-items: center;
     margin: 20px auto;
-    & .action-btn {
-        cursor: pointer;
-        margin: 20px;
-        padding: 1rem;
-        font-size: 2.5rem;
-        border: 2px solid;
-        background-color: $hdcl;
-        color: $peach;
-        &:hover {
-            background-color: $hdcl-2;
-            box-shadow: 10px 10px $cambridge-blue;
-        }
-        &:active {
-            transform: translateX(5px);
-            transform: translateY(5px);
-            box-shadow: 5px 5px $cambridge-blue;
-        }
-    }
     
     @media (max-width: 650px) {
         flex-direction: column;
