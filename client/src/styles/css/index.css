@@ -456,17 +456,17 @@ footer .footer-block .fa:hover {
 }
 @media (max-width: 540px) {
   .modal-container .contact-form .action-btn {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 }
 @media (max-width: 460px) {
   .modal-container .contact-form .action-btn {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 @media (max-width: 410px) {
   .modal-container .contact-form .action-btn {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 .modal-container .contact-form .error {

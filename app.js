@@ -14,6 +14,8 @@ const app = express()
 
 app.use(express.json({extended: true}))
 
+app.use("/api/contact", require("./routes/contact.routes"))
+
 app.use(function(request, response, next) {
 
     if (process.env.NODE_ENV != 'development' && !request.secure) {
@@ -35,7 +37,7 @@ const PORT = process.env.NODE_ENV == 'production' ? process.env.PROD_PORT_HTTPS 
 async function start() {
     try {
         await mongoose.connect(process.env.MONGO_URL)
-        // await https.createServer(credentials,app).listen(PORT)
+        // await https.createServer(credentials, app).listen(PORT)
         app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
     } catch (e) {
         console.log('Server Error', e.message)
