@@ -1,6 +1,7 @@
-import React, {useState} from "react"
+import React from "react"
 import { BrowserRouter as Router } from "react-router-dom"
 import { ToastContainer} from "react-toastify"
+import { useAuth } from './hooks/authHook'
 
 import "react-toastify/dist/ReactToastify.css"
 import "./styles/css/index.css"
@@ -13,13 +14,18 @@ import { Footer } from "./components/footer"
 
 function App() {
 
-  const [isAdmin, setIsAdmin] = useState(true)
+  const {login, logout, token, ready} = useAuth()
+  const isAdmin = !!token
   const routes = useRoutes(isAdmin)
 
-  const logout = () => setIsAdmin(false)
+  if (!ready) {
+    return (
+      <>Loading...</>
+    )
+  }
 
   return (
-      <AuthContext.Provider value={{logout, isAdmin}}>
+      <AuthContext.Provider value={{token, login, logout, isAdmin}}>
         <Router>
           <div className="container">
             <Header />

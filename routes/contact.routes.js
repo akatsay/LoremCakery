@@ -1,5 +1,4 @@
 const { Router } = require("express")
-const bcrypt = require("bcryptjs")
 const Contact = require("../models/Contact")
 const router = Router()
 require("dotenv").config()

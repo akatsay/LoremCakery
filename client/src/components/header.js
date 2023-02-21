@@ -127,7 +127,7 @@ export const Header = () => {
                                 <li 
                                 className="menu-item admin-menu-item" 
                                 onClick={() => {
-                                navigate("/reviews")
+                                navigate("/home")
                                 handleOpen()
                                 logoutHandler()
                                 }}

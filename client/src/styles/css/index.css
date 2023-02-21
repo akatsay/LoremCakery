@@ -568,6 +568,34 @@ footer .footer-block .fa:hover {
   }
 }
 
+.admin-login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+.admin-login-form .input-label {
+  color: #FFE4AD;
+}
+.admin-login-form .input {
+  width: 90%;
+  outline: none;
+  margin: auto;
+  margin-bottom: 30px;
+  opacity: 0.6;
+  cursor: text;
+}
+.admin-login-form .input:focus {
+  border: solid #8BA796 3px;
+  opacity: 1;
+}
+.admin-login-form .action-btn {
+  display: inline-block;
+  width: 60%;
+  font-size: 1.4rem;
+  margin: 30px auto;
+}
+
 * {
   font-family: "Fragment Mono", monospace;
 }

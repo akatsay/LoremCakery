@@ -11,7 +11,7 @@ import { TextArea } from './textArea';
 
 export const ContactForm = () => {
 
-    const {loading, request, error, clearError} = useHttp()
+    const {loading, request, clearError} = useHttp()
 
     return (
       <Formik

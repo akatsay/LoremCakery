@@ -15,6 +15,7 @@ const app = express()
 app.use(express.json({extended: true}))
 
 app.use("/api/contact", require("./routes/contact.routes"))
+app.use("/api/admin", require("./routes/admin.routes"))
 
 app.use(function(request, response, next) {
 
