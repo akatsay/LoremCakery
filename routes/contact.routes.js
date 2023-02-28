@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer")
 // /api/contact
 
 router.post(
-    '/postContact',
+    '/contact',
     async (req, res) => {
     try {
 
@@ -40,7 +40,7 @@ router.post(
 
        await newContact.save()
 
-       res.json({message: "success"})
+       res.status(201).json({message: "Email sent and contact saved"})
 
     } catch (e) {
         console.log(e)

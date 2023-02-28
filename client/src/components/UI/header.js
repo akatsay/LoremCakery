@@ -1,9 +1,9 @@
 import React, {useRef, useContext} from "react";
 
 import { toast, Slide } from "react-toastify"
-import { AuthContext } from "../context/authContext";
+import { AuthContext } from "../../context/authContext";
 import { useNavigate } from 'react-router-dom'
-import { useDetectOutsideClick } from "../hooks/useDetectOutsideClick";
+import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 
 export const Header = () => {
 

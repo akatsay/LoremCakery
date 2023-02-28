@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {motion} from "framer-motion"
 
-import { ContactModal } from "../components/contactModal";
+import { ContactModal } from "../components/contactModal/contactModal";
 
 export const ContactPage = () => {
 

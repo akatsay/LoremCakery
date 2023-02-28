@@ -2,12 +2,12 @@ import React from 'react'
 import {Routes, Route, Navigate, useLocation} from "react-router-dom"
 import { AnimatePresence } from 'framer-motion'
 
-import { HomePage } from './pages/homePage'
-import { AboutPage } from './pages/aboutPage'
-import { ContactPage } from './pages/contactPage'
-import { GalleryPage } from './pages/galleryPage'
-import { ReviewsPage } from './pages/reviewsPage'
-import { AdminLoginPage } from './pages/adminLoginPage'
+import { HomePage } from '../pages/homePage'
+import { AboutPage } from '../pages/aboutPage'
+import { ContactPage } from '../pages/contactPage'
+import { GalleryPage } from '../pages/galleryPage'
+import { ReviewsPage } from '../pages/reviewsPage'
+import { AdminLoginPage } from '../pages/adminLoginPage'
 
 export const UserRoutes = () => {
     const location = useLocation()

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import videoHead from "../images/head-video.mp4"
 
-import { ContactModal } from "../components/contactModal";
+import { ContactModal } from "../components/contactModal/contactModal";
 
 export const HomePage = () => {
 

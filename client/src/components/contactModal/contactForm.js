@@ -1,10 +1,10 @@
 import React from 'react';
 import { toast, Slide } from "react-toastify"
 import { Formik, Form } from 'formik';
-import { useHttp } from "../hooks/httpHook"
+import { useHttp } from "../../hooks/httpHook"
 
 
-import { contactFormsSchema } from '../Validations/contactFormValidation';
+import { contactFormsSchema } from '../../Validations/contactFormValidation';
 
 import { Input } from './input';
 import { TextArea } from './textArea';
@@ -24,7 +24,7 @@ export const ContactForm = () => {
         validationSchema={contactFormsSchema}
         onSubmit={ async (values) => {
             try {
-                await request("api/contact/postContact", "post", {...values})
+                await request("api/contact/contact", "post", {...values})
                 toast.success("Contact request sent", {
                     style: {backgroundColor: "#555", color: "white"},
                     position: "bottom-right",

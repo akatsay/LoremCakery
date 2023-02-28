@@ -7,10 +7,10 @@ import "react-toastify/dist/ReactToastify.css"
 import "./styles/css/index.css"
 
 import { AuthContext } from "./context/authContext"
-import { useRoutes } from "./routes"
+import { useRoutes } from "./routes/routes"
 
-import { Header } from "./components/header"
-import { Footer } from "./components/footer"
+import { Header } from "./components/UI/header"
+import { Footer } from "./components/UI/footer"
 
 function App() {
 

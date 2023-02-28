@@ -1,14 +1,14 @@
 import React from 'react'
 import {Routes, Route, Navigate} from "react-router-dom"
 
-import { HomePage } from './pages/homePage'
-import { AboutPage } from './pages/aboutPage'
-import { ContactPage } from './pages/contactPage'
-import { GalleryPage } from './pages/galleryPage'
-import { ReviewsPage } from './pages/reviewsPage'
-import { AdminPanelPage } from './pages/adminPanelPage'
-import { AdminGalleryPage } from './pages/adminGalleryPage'
-import { AdminLoginPage } from './pages/adminLoginPage'
+import { HomePage } from '../pages/homePage'
+import { AboutPage } from '../pages/aboutPage'
+import { ContactPage } from '../pages/contactPage'
+import { GalleryPage } from '../pages/galleryPage'
+import { ReviewsPage } from '../pages/reviewsPage'
+import { AdminPanelPage } from '../pages/adminPanelPage'
+import { AdminGalleryPage } from '../pages/adminGalleryPage'
+import { AdminLoginPage } from '../pages/adminLoginPage'
 
 export const AdminRoutes = () => {
 

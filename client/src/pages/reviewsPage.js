@@ -1,6 +1,9 @@
 import React from "react";
 import {motion} from "framer-motion"
 
+import { ReviewsList } from "../components/reviewsPage/reviewsList";
+import { ReviewCreateArea } from "../components/reviewsPage/reviewCreateArea";
+
 export const ReviewsPage = () => {
     return (
         <motion.div
@@ -9,7 +12,13 @@ export const ReviewsPage = () => {
             exit = {{x: "100%", height: 0, transition: {duration: 0.5}}}
         >
             <div className="page-container">
-                <h2>This is reviews Page</h2>
+                <h2 className="page-title">Our reviews</h2>
+                    <div className="create-area-container">
+                        <ReviewCreateArea />
+                    </div>
+                <div className="reviews-list-container">
+                    <ReviewsList />
+                </div>
             </div>
         </motion.div>
     )
