@@ -25,7 +25,7 @@ export const ContactModal = ({open, onClose}) => {
                     >
                         <h2 className="title">Email inquiry</h2>
 
-                        <ContactForm />
+                        <ContactForm onClose={onClose} />
 
                     </div>
             </motion.div>

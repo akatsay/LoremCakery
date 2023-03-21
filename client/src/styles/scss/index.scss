@@ -17,6 +17,7 @@ $cambridge-blue: #8BA796;
 @import "home.scss";
 @import "adminLogin.scss";
 @import "reviewsPage.scss";
+@import "gallery.scss";
 
 * {
     font-family: 'Fragment Mono', monospace;
@@ -57,3 +58,7 @@ $cambridge-blue: #8BA796;
         box-shadow: 5px 5px $cambridge-blue;
     }
 }
+
+.hidden {
+    display: none;
+} 

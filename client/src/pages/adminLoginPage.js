@@ -22,7 +22,7 @@ export const AdminLoginPage = () => {
     const loginHandler = async (e) => {
         e.preventDefault()
         try {
-            const data = await request("api/admin/adminLogin", "post", {...form})
+            const data = await request("api/admin/login", "post", {...form})
             auth.login(data.token)
             navigate("/adminPanel")
             toast.success(data.message, {

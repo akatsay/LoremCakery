@@ -6,7 +6,7 @@ require("dotenv").config()
 // /api/admin
 
 router.post(
-    '/adminLogin',
+    '/login',
     async (req, res) => {
     try {
 

@@ -5,8 +5,8 @@ import { AnimatePresence } from 'framer-motion'
 import { HomePage } from '../pages/homePage'
 import { AboutPage } from '../pages/aboutPage'
 import { ContactPage } from '../pages/contactPage'
-import { GalleryPage } from '../pages/galleryPage'
-import { ReviewsPage } from '../pages/reviewsPage'
+import { GalleryPage } from '../pages/galleryPage/galleryPage'
+import { ReviewsPage } from '../pages/reviewsPage/reviewsPage'
 import { AdminLoginPage } from '../pages/adminLoginPage'
 
 export const UserRoutes = () => {

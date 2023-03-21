@@ -117,16 +117,6 @@ export const Header = () => {
                                 <li 
                                 className="menu-item admin-menu-item" 
                                 onClick={() => {
-                                navigate("/adminGallery")
-                                handleOpen()
-                                }}
-                                >
-                                Gallery Editor
-                                </li>
-
-                                <li 
-                                className="menu-item admin-menu-item" 
-                                onClick={() => {
                                 navigate("/home")
                                 handleOpen()
                                 logoutHandler()

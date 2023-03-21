@@ -8,7 +8,7 @@ const nodemailer = require("nodemailer")
 // /api/contact
 
 router.post(
-    '/contact',
+    '/',
     async (req, res) => {
     try {
 

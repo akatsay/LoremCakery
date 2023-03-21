@@ -4,9 +4,9 @@ import { toast, Slide } from "react-toastify"
 
 import { StarRating } from "./starRating";
 
-export const ReviewCreateArea = () => {
+export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
 
-    const {loading, request, clearError} = useHttp()
+  const {loading, request, clearError} = useHttp()
 
   const [rating, setRating] = useState(0);
   const [name, setName] = useState("");
@@ -30,7 +30,7 @@ export const ReviewCreateArea = () => {
     }
 
     try {
-        const data = await request("/api/review/review", "post", { rating, name, comment})
+        const data = await request("/api/review", "post", { rating, name, comment})
         toast.success(data.message, {
             style: {backgroundColor: "#555", color: "white"},
             position: "bottom-right",
@@ -43,6 +43,7 @@ export const ReviewCreateArea = () => {
             theme: "light",
             transition: Slide,
             });
+        onCreateReviewUpdateList()
         setRating(0)
         setName("")
         setComment("")
@@ -74,33 +75,35 @@ export const ReviewCreateArea = () => {
   }
 
   return (
-    <form className="review-form" onSubmit={handleSubmit}>
+    <div className="create-area-container">
+      <form className="review-form" onSubmit={handleSubmit}>
 
-        <label className="input-label" htmlFor="rating">Rate us:</label>
-        <StarRating value={rating} onValueChange={handleRatingChange} />
-        <div ref={errorRef} className="error">* Required</div>
-        <label className="input-label" htmlFor="name">Your name:</label>
-        <input
-          className="input"
-          type="text"
-          id="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          autoComplete="off"
-          required
-        />
+          <label className="input-label" htmlFor="rating">Rate us:</label>
+          <StarRating value={rating} onValueChange={handleRatingChange} />
+          <div ref={errorRef} className="error">* Required</div>
+          <label className="input-label" htmlFor="name">Your name:</label>
+          <input
+            className="input"
+            type="text"
+            id="name"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            autoComplete="off"
+            required
+          />
 
-        <label className="input-label" htmlFor="comment">Leave a comment:</label>
-        <textarea
-          className="input textarea"
-          id="comment"
-          value={comment}
-          onChange={(event) => setComment(event.target.value)}
-          onKeyUp={expandTextAreaWhenTyping}
-          required
-        />
+          <label className="input-label" htmlFor="comment">Leave a comment:</label>
+          <textarea
+            className="input textarea"
+            id="comment"
+            value={comment}
+            onChange={(event) => setComment(event.target.value)}
+            onKeyUp={expandTextAreaWhenTyping}
+            required
+          />
 
-      <button disabled={ loading ? true : false} className="action-btn" type="submit">Submit Review</button>
-    </form>
+        <button disabled={ loading ? true : false} className="action-btn" type="submit">Submit Review</button>
+      </form>
+    </div>
   );
 }

@@ -6,13 +6,13 @@ const router = Router()
 // api/review
 
 router.get(
-    '/review',
+    '/',
     async (req, res) => {
     try {
 
         const reviews = await Review.find()
 
-        res.status(200).json(reviews)
+        res.status(200).json(reviews.reverse())
 
     } catch (e) {
         console.log(e)
@@ -21,15 +21,23 @@ router.get(
 })
 
 router.post(
-    '/review',
+    '/',
     async (req, res) => {
     try {
+
+        const currentDate = new Date
+
+        const year = currentDate.getFullYear()
+        const month = currentDate.toLocaleString('EN', { month: 'long' })
+        const day = currentDate.getDay()
+
+        const dateString = `${month} ${day} ${year}`
 
         const newReview = new Review({
             rating: req.body.rating,
             name: req.body.name,
             comment: req.body.comment,
-            date: new Date
+            date: dateString
            })
 
        await newReview.save()
