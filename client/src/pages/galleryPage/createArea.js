@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { toast, Slide } from "react-toastify"
 import { Formik, Form } from 'formik';
 import { useHttp } from "../../hooks/httpHook"
@@ -11,54 +11,52 @@ import { TextArea } from '../../components/forms/textArea';
 import { FileInput } from "../../components/forms/fileInput";
 
 
-const CreateArea = () => {
+const CreateArea = ({ fetchItems }) => {
     const {loading, request, clearError} = useHttp()
 
     return (
       <Formik
         initialValues={{
           image: '',
+          imageAsString: '',
           title: '',
           description: '',
           price: '',
         }}
         validationSchema={galleryItemSchema}
-        onSubmit = {(values) => {
-            console.log(values)
-        }}
-        // onSubmit={ async (values) => {
-        //     try {
-        //         await request("api/contact", "post", {...values})
-        //         toast.success("Contact request sent", {
-        //             style: {backgroundColor: "#555", color: "white"},
-        //             position: "bottom-right",
-        //             autoClose: 2000,
-        //             hideProgressBar: true,
-        //             closeOnClick: true,
-        //             pauseOnHover: false,
-        //             draggable: true,
-        //             progress: undefined,
-        //             theme: "light",
-        //             transition: Slide,
-        //         })
 
-        //         clearError()
+        onSubmit={ async (values) => {
+
+            const data = {
+              imageAsString: values.imageAsString,
+              title: values.title,
+              description: values.description,
+              price: values.price,
+            }
+
+            try {
+                console.log(data)
+                await request("api/gallery", "post", data)
+                toast.success("Contact request sent", {
+                    style: {backgroundColor: "#555", color: "white"},
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Slide,
+                })
+
+                fetchItems()
+                clearError()
                 
-        //     } catch (e) {
-        //         toast.error(e.message, {
-        //             style: {backgroundColor: "#555", color: "white"},
-        //             position: "bottom-right",
-        //             autoClose: 2000,
-        //             hideProgressBar: true,
-        //             closeOnClick: true,
-        //             pauseOnHover: false,
-        //             draggable: true,
-        //             progress: undefined,
-        //             theme: "light",
-        //             transition: Slide,
-        //             });
-        //     }
-        // }}
+            } catch (e) {
+                console.log(e.message)
+            }
+        }}
       >
         {({ values, setFieldValue }) => (
           <>

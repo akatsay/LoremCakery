@@ -17,6 +17,7 @@ app.use(express.json({extended: true}))
 app.use("/api/contact", require("./routes/contact.routes"))
 app.use("/api/admin", require("./routes/admin.routes"))
 app.use("/api/review", require("./routes/review.routes"))
+app.use("/api/gallery", require("./routes/gallery.routes"))
 
 app.use(function(request, response, next) {
 

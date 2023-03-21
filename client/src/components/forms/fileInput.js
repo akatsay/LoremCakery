@@ -1,11 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { ErrorMessage, useField } from 'formik';
 import ImagePreview from '../../pages/galleryPage/imagePreview';
 
 export const FileInput = ({label, values, setFieldValue, ...props }) => {
     const [field, meta] = useField(props);
-
-    console.log(field)
 
     const handleFileInputChange = (e) => {
       setFieldValue("image", e.target.files[0])
@@ -21,7 +19,7 @@ export const FileInput = ({label, values, setFieldValue, ...props }) => {
           type="file"
           {...props}
         />
-        {values.image && <ImagePreview file={values.image} />}
+        {values.image && <ImagePreview file={values.image} setFieldValue={setFieldValue} />}
         <ErrorMessage component="div" name={field.name} className="error" />
       </>
     )

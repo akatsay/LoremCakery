@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ImagePreview = ({ file }) => {
+const ImagePreview = ({ file, setFieldValue }) => {
 
     const [previewSource, setPreviewSource] = useState('');
 
@@ -9,6 +9,7 @@ const ImagePreview = ({ file }) => {
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setPreviewSource(reader.result);
+            setFieldValue("imageAsString", reader.result )
         };
     }, [file])
 
