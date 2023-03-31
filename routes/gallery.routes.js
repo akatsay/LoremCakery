@@ -1,5 +1,6 @@
 const { Router } = require("express")
 const GalleryItem = require("../models/Gallery")
+const auth = require("../middlewares/auth.middleware")
 const router = Router()
 
 
@@ -22,6 +23,7 @@ router.get(
 
 router.post(
     '/',
+    auth,
     async (req, res) => {
     try {
 
@@ -32,6 +34,52 @@ router.post(
         await newGalleryItem.save()
 
         res.status(201).json({message: "Item saved"})
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({ message: " something went wrong on the server... " })
+    }
+})
+
+router.put(
+    '/',
+    auth,
+    async (req, res) => {
+    try {
+
+        const {id, ...data} = req.body
+
+        const currentGalleryItem = await GalleryItem.findById(id)
+        
+        if (!currentGalleryItem) {
+            return res.status(404).json({message: "Item doesn't exist"})
+        }
+
+        await currentGalleryItem.updateOne(data);
+
+        res.json({message: "Item updated"})
+    } catch (e) {
+        console.log(e)
+        res.status(500).json({ message: " something went wrong on the server... " })
+    }
+})
+
+router.delete(
+    '/',
+    auth,
+    async (req, res) => {
+    try {
+
+        const {id} = req.body
+
+        const currentGalleryItem = await GalleryItem.findById(id)
+        
+        if (!currentGalleryItem) {
+            return res.status(404).json({message: "Item doesn't exist"})
+        }
+
+        await currentGalleryItem.deleteOne()
+        res.json({message: "Item deleted"})
 
     } catch (e) {
         console.log(e)

@@ -12,8 +12,6 @@ export const GalleryPage = () => {
 
     const [items, setItems] = useState("")
 
-    console.log(items)
-
     const fetchItems = useCallback( async () => {
         try {
             const fetchedItems = await request("api/gallery", "get")
@@ -38,9 +36,9 @@ export const GalleryPage = () => {
             <div className="page-container">
                 {isAdmin && <CreateArea fetchItems={fetchItems} />}
                 <div className="gallery-items-container">
-                    { items && items.map((item, i) => 
+                    { items && items.map((item) => 
                         <GalleryItem 
-                            key={i}
+                            key={item._id}
                             imageSrc={item.imageAsString}
                             title={item.title}
                             description={item.description}

@@ -12,7 +12,7 @@ router.post(
 
         const {login, password} = req.body
 
-        if (login != process.env.LOGIN && password != process.env.PASSWORD2) {
+        if (login != process.env.LOGIN || password != process.env.PASSWORD2) {
             return res.status(401).json({message: "incorrect login or password"}) 
         } 
 

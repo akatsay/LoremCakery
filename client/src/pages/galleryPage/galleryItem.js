@@ -1,12 +1,20 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
+import { AuthContext } from '../../context/authContext'
 import {motion} from "framer-motion"
+import GalleryItemModal from './galleryItemModal';
 
 const GalleryItem = ({imageSrc, title, description, price}) => {
+
+    const [openModal, setOpenModal] = useState(false)
+
+    const {isAdmin} = useContext(AuthContext)
+
     return ( 
         <>
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
         <div 
         className="gallery-item"
+        onClick={() => isAdmin && setOpenModal(true)}
         >
             <img className='gallery-item-img' src={imageSrc} alt="item"></img>
             <div className='gallery-item-info'>
@@ -16,6 +24,14 @@ const GalleryItem = ({imageSrc, title, description, price}) => {
             </div>
         </div>
         </motion.div>
+        <GalleryItemModal 
+            open={openModal} 
+            onClose={() => setOpenModal(false)} 
+            imageSrc={imageSrc}
+            title={title}
+            description={description}
+            price={price}
+        />
     </>
      );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const ImagePreview = ({ file, setFieldValue }) => {
 
-    const [previewSource, setPreviewSource] = useState('');
+    const [previewSource, setPreviewSource] = useState("");
 
     useEffect(() => {
         const reader = new FileReader();
