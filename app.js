@@ -12,7 +12,7 @@ const https = require('https')
 
 const app = express()
 
-app.use(express.json({extended: true}))
+app.use(express.json({extended: true, limit: "2mb"}))
 
 app.use("/api/contact", require("./routes/contact.routes"))
 app.use("/api/admin", require("./routes/admin.routes"))

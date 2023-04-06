@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AuthContext } from '../../context/authContext'
 import { toast, Slide } from "react-toastify"
 import { Formik, Form } from 'formik';
 import { useHttp } from "../../hooks/httpHook"
@@ -11,8 +12,10 @@ import { TextArea } from '../../components/forms/textArea';
 import { FileInput } from "../../components/forms/fileInput";
 
 
-const CreateArea = ({ fetchItems }) => {
+const CreateAreaForm = ({ onClose, fetchItems }) => {
     const {loading, request, clearError} = useHttp()
+
+    const auth = useContext(AuthContext)
 
     return (
       <Formik
@@ -35,9 +38,10 @@ const CreateArea = ({ fetchItems }) => {
             }
 
             try {
-                console.log(data)
-                await request("api/gallery", "post", data)
-                toast.success("Contact request sent", {
+                await request("api/gallery", "post", data, {
+                  Authorization: `Bearer ${auth.token}`
+                })
+                toast.success("Item created", {
                     style: {backgroundColor: "#555", color: "white"},
                     position: "bottom-right",
                     autoClose: 2000,
@@ -52,8 +56,21 @@ const CreateArea = ({ fetchItems }) => {
 
                 fetchItems()
                 clearError()
+                onClose()
                 
             } catch (e) {
+                toast.error("An error processing your request", {
+                  style: {backgroundColor: "#555", color: "white"},
+                  position: "bottom-right",
+                  autoClose: 2000,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Slide,
+                })
                 console.log(e.message)
             }
         }}
@@ -75,4 +92,4 @@ const CreateArea = ({ fetchItems }) => {
     )
 }
  
-export default CreateArea;
+export default CreateAreaForm;

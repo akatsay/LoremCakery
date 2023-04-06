@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/authContext'
 import {motion} from "framer-motion"
 import GalleryItemModal from './galleryItemModal';
 
-const GalleryItem = ({imageSrc, title, description, price}) => {
+const GalleryItem = ({id, imageSrc, title, description, price, fetchItems}) => {
 
     const [openModal, setOpenModal] = useState(false)
 
@@ -27,10 +27,12 @@ const GalleryItem = ({imageSrc, title, description, price}) => {
         <GalleryItemModal 
             open={openModal} 
             onClose={() => setOpenModal(false)} 
+            id={id}
             imageSrc={imageSrc}
             title={title}
             description={description}
             price={price}
+            fetchItems={fetchItems}
         />
     </>
      );

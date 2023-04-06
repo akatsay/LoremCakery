@@ -1,9 +1,9 @@
 /* Error: Undefined variable.
  *    ,
- * 23 |     box-shadow: 0px 0px 18px 0px $peach;
+ * 11 |     box-shadow: 0px 0px 18px 0px $peach;
  *    |                                  ^^^^^^
  *    '
- *   scss\contactModal.scss 23:34  root stylesheet */
+ *   scss\contactModal.scss 11:34  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined variable.\a    \2577 \a 23 \2502      box-shadow: 0px 0px 18px 0px $peach;\d\a    \2502                                   ^^^^^^\a    \2575 \a   scss\\contactModal.scss 23:34  root stylesheet";
+  content: "Error: Undefined variable.\a    \2577 \a 11 \2502      box-shadow: 0px 0px 18px 0px $peach;\d\a    \2502                                   ^^^^^^\a    \2575 \a   scss\\contactModal.scss 11:34  root stylesheet";
 }

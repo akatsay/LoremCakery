@@ -2,6 +2,7 @@ const { Router } = require("express")
 const GalleryItem = require("../models/Gallery")
 const auth = require("../middlewares/auth.middleware")
 const router = Router()
+const {cloudinary} = require("../utils/cloudinary")
 
 
 // /api/gallery
@@ -27,13 +28,28 @@ router.post(
     async (req, res) => {
     try {
 
-        const data = req.body
+        const {imageAsString, ...data} = req.body
 
-        const newGalleryItem = new GalleryItem (data)
+        if (imageAsString) {
 
-        await newGalleryItem.save()
+            const uploadedResponse = await cloudinary.uploader.
+            upload(imageAsString, {
+                upload_preset: "LoremGallery"
+            })
 
-        res.status(201).json({message: "Item saved"})
+            const cloudinaryData = {public_id: uploadedResponse.public_id, url: uploadedResponse.url}
+            const dataToSave = ({...cloudinaryData, ...data})
+            const newGalleryItem = new GalleryItem (dataToSave)
+            await newGalleryItem.save()
+            res.status(201).json({message: "Item saved"})
+
+        } else {
+
+            const newGalleryItem = new GalleryItem (data)
+            await newGalleryItem.save()
+            res.status(201).json({message: "Item saved"})
+
+        }
 
     } catch (e) {
         console.log(e)
@@ -47,7 +63,7 @@ router.put(
     async (req, res) => {
     try {
 
-        const {id, ...data} = req.body
+        const {id, imageAsString, ...data} = req.body
 
         const currentGalleryItem = await GalleryItem.findById(id)
         
@@ -55,9 +71,35 @@ router.put(
             return res.status(404).json({message: "Item doesn't exist"})
         }
 
-        await currentGalleryItem.updateOne(data);
+        if(currentGalleryItem.public_id) {
+            await cloudinary.uploader.destroy(currentGalleryItem.public_id)
+        }
 
-        res.json({message: "Item updated"})
+        // shitty solution to avoid error when updating item without uploading new image
+
+        const oldImgUrl = currentGalleryItem.url // pseudo cacheing :)
+
+        if(oldImgUrl !== imageAsString) {
+
+            const updatedResponse = await cloudinary.uploader.
+            upload(imageAsString, {
+                upload_preset: "LoremGallery"
+            })
+    
+            const cloudinaryData = {public_id: updatedResponse.public_id, url: updatedResponse.url}
+            const dataToUpdate = ({...cloudinaryData, ...data})
+
+            await currentGalleryItem.updateOne(dataToUpdate);
+    
+            res.json({message: "Item updated"}) 
+
+        } else {
+            await currentGalleryItem.updateOne(data);
+            res.json({message: "Item updated"}) 
+        }
+
+        //-----------------------------------------
+
     } catch (e) {
         console.log(e)
         res.status(500).json({ message: " something went wrong on the server... " })
@@ -78,6 +120,10 @@ router.delete(
             return res.status(404).json({message: "Item doesn't exist"})
         }
 
+        if (currentGalleryItem.public_id) {
+            await cloudinary.uploader.destroy(currentGalleryItem.public_id)
+        }
+        
         await currentGalleryItem.deleteOne()
         res.json({message: "Item deleted"})
 

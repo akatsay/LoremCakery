@@ -6,7 +6,6 @@ export const galleryItemSchema = yup.object().shape({
     image: yup
         .mixed()
         .nullable()
-        .required("*Required")
         .test(
             "FILE_FORMAT",
             "Only PNG and JPEG/JPG files are allowed",

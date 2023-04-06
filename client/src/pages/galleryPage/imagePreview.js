@@ -23,7 +23,7 @@ const ImagePreview = ({ file, setFieldValue }) => {
                     style={{ height: '300px', width: "300px" }}
                 />
                 :
-                "loading..."
+                <p>loading...</p>
             }
         </>
      );

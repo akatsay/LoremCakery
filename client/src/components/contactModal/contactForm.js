@@ -42,18 +42,19 @@ export const ContactForm = ({onClose}) => {
                 clearError()
                 
             } catch (e) {
-                toast.error(e.message, {
-                    style: {backgroundColor: "#555", color: "white"},
-                    position: "bottom-right",
-                    autoClose: 2000,
-                    hideProgressBar: true,
-                    closeOnClick: true,
-                    pauseOnHover: false,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Slide,
-                    });
+                toast.error("Error processing your request", {
+                  style: {backgroundColor: "#555", color: "white"},
+                  position: "bottom-right",
+                  autoClose: 2000,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                  transition: Slide,
+                  });
+                console.log(e.message)
             }
         }}
       >

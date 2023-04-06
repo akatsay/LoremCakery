@@ -48,7 +48,7 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
         setName("")
         setComment("")
     } catch (e) {
-        toast.error(e.message, {
+        toast.error("Error processing your request", {
             style: {backgroundColor: "#555", color: "white"},
             position: "bottom-right",
             autoClose: 2000,
@@ -60,6 +60,7 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
             theme: "light",
             transition: Slide,
             });
+        console.log(e.message)
     }
 
     clearError()
