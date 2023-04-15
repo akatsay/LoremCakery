@@ -266,7 +266,7 @@ footer .footer-block .fa:hover {
   background-color: #8BA796;
   color: #201D35;
   padding-top: 20px;
-  font-size: 1.2rem;
+  font-size: calc(0.5em + 1vw);
 }
 .story-block h2 {
   text-align: center;
@@ -512,7 +512,7 @@ footer .footer-block .fa:hover {
   height: 50%;
 }
 .home-content .home-text-content {
-  font-size: 1.2rem;
+  font-size: calc(0.5em + 1vw);
   margin: 30px;
   margin-top: 0;
   background-color: #CCB58E;
@@ -522,7 +522,6 @@ footer .footer-block .fa:hover {
   margin: 30px 0;
 }
 .home-content .home-text-content .description {
-  font-size: 1.5rem;
   margin-top: 0;
 }
 .home-content .home-text-content .description .title {
@@ -747,7 +746,7 @@ footer .footer-block .fa:hover {
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  height: 550px;
+  height: 650px;
   width: 350px;
   margin: 1rem;
   border: none;
@@ -766,7 +765,8 @@ footer .footer-block .fa:hover {
   font-size: 35px;
 }
 .gallery-items-container .gallery-item {
-  height: 550px;
+  position: relative;
+  height: 650px;
   width: 350px;
   margin: 1rem;
   border: none;
@@ -794,7 +794,9 @@ footer .footer-block .fa:hover {
   font-size: 1.5rem;
 }
 .gallery-items-container .gallery-item .gallery-item-info .price {
-  display: block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   text-align: right;
   font-size: 2rem;
   color: white;
@@ -849,6 +851,37 @@ footer .footer-block .fa:hover {
 .gallery-modal-container .gallery-item-form .input:focus {
   border: solid #8BA796 3px;
   opacity: 1;
+}
+.gallery-modal-container .gallery-item-form .file-input-label {
+  position: relative;
+  border: 3px dashed #8BA796;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  min-height: 100px;
+}
+.gallery-modal-container .gallery-item-form .file-input-label.invalid {
+  border-color: rgb(241, 78, 78);
+}
+.gallery-modal-container .gallery-item-form .file-input-label .drag-tip {
+  position: absolute;
+  z-index: 0;
+  display: block;
+  color: black;
+}
+.gallery-modal-container .gallery-item-form .file-input-label .file-input {
+  z-index: 2;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.gallery-modal-container .gallery-item-form .file-input-label .preview-image {
+  z-index: 1;
+  margin: auto;
 }
 .gallery-modal-container .gallery-item-form .message {
   width: 100%;

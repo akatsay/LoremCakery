@@ -21,6 +21,7 @@ const ImagePreview = ({ file, setFieldValue }) => {
                     src={previewSource}
                     alt="preview"
                     style={{ height: '300px', width: "300px" }}
+                    className='preview-image'
                 />
                 :
                 <p>loading...</p>

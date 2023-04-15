@@ -7,6 +7,7 @@ const ImagePlaceholderInEditForm = ({imagePlaceholder}) => {
                 src={imagePlaceholder}
                 alt="preview"
                 style={{ height: '300px', width: "300px" }}
+                className='preview-image'
             />
     </>
     );

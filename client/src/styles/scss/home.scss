@@ -46,7 +46,7 @@
         height: 50%;
     }
     & .home-text-content {
-        font-size: 1.2rem;
+        font-size: calc(.5em + 1vw);
         margin: 30px;
         margin-top: 0;
         background-color: $ctcl;
@@ -56,7 +56,6 @@
         }
 
         & .description {
-            font-size: 1.5rem;
             margin-top: 0;
             & .title {
                 margin: 0;
