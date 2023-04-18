@@ -45,7 +45,7 @@ export const HomePage = () => {
                             </button>
                             <span> to see our unreal cakes</span>
                             <hr />
-                            <button className="link-btn" onClick={() => navigate("/gallery")}>
+                            <button className="link-btn" onClick={() => navigate("/reviews")}>
                             check out reviews
                             </button>
                             <span> to see what our customers think</span>

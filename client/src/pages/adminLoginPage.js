@@ -22,7 +22,7 @@ export const AdminLoginPage = () => {
     const loginHandler = async (e) => {
         e.preventDefault()
         try {
-            const data = await request("api/admin/login", "post", {...form})
+            const data = await request("api/admin", "post", {...form})
             auth.login(data.token)
             navigate("/adminPanel")
             toast.success(data.message, {
@@ -70,6 +70,7 @@ export const AdminLoginPage = () => {
                 type="text"
                 value={form.login}
                 onChange={changeHandler}
+                required
                 />
                 <label className="input-label" htmlFor="password">Password</label>
                 <input
@@ -79,6 +80,7 @@ export const AdminLoginPage = () => {
                 type="password"
                 value={form.password}
                 onChange={changeHandler}
+                required
                 />
                 <button 
                 disabled={loading ? true : false} 

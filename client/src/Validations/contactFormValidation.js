@@ -3,6 +3,7 @@ import "yup-phone-lite"
 
 export const contactFormsSchema = yup.object().shape({
     firstName: yup.string()
+        .matches( /^[A-Za-z\s]*$/, "Must only contain latin letters")
         .required("*Required")
         .max(30, "Must be 30 characters or less"),
     mobile: yup.string()

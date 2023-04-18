@@ -42,7 +42,7 @@ export const ContactForm = ({onClose}) => {
                 clearError()
                 
             } catch (e) {
-                toast.error("Error processing your request", {
+                toast.error(e.message, {
                   style: {backgroundColor: "#555", color: "white"},
                   position: "bottom-right",
                   autoClose: 2000,

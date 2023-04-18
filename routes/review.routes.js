@@ -1,4 +1,5 @@
 const { Router } = require("express")
+const { check, validationResult } = require("express-validator")
 const Review = require("../models/Review")
 const router = Router()
 
@@ -22,8 +23,27 @@ router.get(
 
 router.post(
     '/',
+    [
+        check("rating", "Wrong rating")
+            .isNumeric()
+            .not().isEmpty(),
+        check("name", "Wrong name")
+            .matches(/^[A-Za-z\s]*$/).withMessage("Name must only contain latin letters")
+            .not().isEmpty().withMessage("Don't forget your name"),
+        check("comment", "No comment provided")
+            .not().isEmpty()
+    ],
     async (req, res) => {
     try {
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array()[0],
+                message: `Incorrect form data ${errors.array()[0].msg}`
+            })
+        }
 
         const currentDate = new Date
 

@@ -2,7 +2,6 @@ import React from 'react';
 import CreateAreaForm from './createAreaForm';
 
 const createAreaModal = ({open, onClose, fetchItems}) => {
-    console.log(open)
     return ( 
         <>
         {open &&

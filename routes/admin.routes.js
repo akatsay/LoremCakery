@@ -1,14 +1,30 @@
-const { Router } = require("express")
-const router = Router()
-const jwt = require("jsonwebtoken")
 require("dotenv").config()
+const { Router } = require("express")
+const { check, validationResult } = require("express-validator")
+const jwt = require("jsonwebtoken")
+const router = Router()
+
 
 // /api/admin
 
 router.post(
-    '/login',
+    '/',
+    [
+        check("login", "Wrong login")
+            .not().isEmpty().withMessage("Don't forget your login"),
+        check("password", "Wrong password")
+            .not().isEmpty().withMessage("Don't forget your password")
+    ],
     async (req, res) => {
     try {
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                message: "Incorrect email or password"
+            })
+        }
 
         const {login, password} = req.body
 

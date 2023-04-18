@@ -8,29 +8,35 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
 
   const {loading, request, clearError} = useHttp()
 
-  const [rating, setRating] = useState(0);
-  const [name, setName] = useState("");
-  const [comment, setComment] = useState("");
+  const [reviewForm, setReviewForm] = useState({
+    rating: 0,
+    name: "",
+    comment: ""
+  })
 
   const errorRef = useRef(null)
 
   const handleRatingChange = (newRating) => {
-    setRating(newRating);
+    setReviewForm({...reviewForm, rating: newRating})
+  }
+
+  const handleFormChange = (e) => {
+    setReviewForm({...reviewForm, [e.target.name] : e.target.value})
   };
 
   useEffect(() => {
     errorRef.current.style.display = "none"
-  }, [rating])
+  }, [reviewForm.rating])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (rating < 1 || rating > 5) {
+    if (reviewForm.rating < 1 || reviewForm.rating > 5) {
       errorRef.current.style.display = "block"
       return;
     }
 
     try {
-        const data = await request("/api/review", "post", { rating, name, comment})
+        const data = await request("/api/review", "post", {...reviewForm})
         toast.success(data.message, {
             style: {backgroundColor: "#555", color: "white"},
             position: "bottom-right",
@@ -44,11 +50,13 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
             transition: Slide,
             });
         onCreateReviewUpdateList()
-        setRating(0)
-        setName("")
-        setComment("")
+        setReviewForm({
+          rating: 0,
+          name: "",
+          comment: ""
+        })
     } catch (e) {
-        toast.error("Error processing your request", {
+        toast.error(e.message, {
             style: {backgroundColor: "#555", color: "white"},
             position: "bottom-right",
             autoClose: 2000,
@@ -80,15 +88,16 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
       <form className="review-form" onSubmit={handleSubmit}>
 
           <label className="input-label" htmlFor="rating">Rate us:</label>
-          <StarRating value={rating} onValueChange={handleRatingChange} />
+          <StarRating value={reviewForm.rating} onValueChange={handleRatingChange} />
           <div ref={errorRef} className="error">* Required</div>
           <label className="input-label" htmlFor="name">Your name:</label>
           <input
             className="input"
             type="text"
             id="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
+            name="name"
+            value={reviewForm.name}
+            onChange={handleFormChange}
             autoComplete="off"
             required
           />
@@ -97,8 +106,9 @@ export const ReviewCreateArea = ({  onCreateReviewUpdateList  }) => {
           <textarea
             className="input textarea"
             id="comment"
-            value={comment}
-            onChange={(event) => setComment(event.target.value)}
+            name="comment"
+            value={reviewForm.comment}
+            onChange={handleFormChange}
             onKeyUp={expandTextAreaWhenTyping}
             required
           />

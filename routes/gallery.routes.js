@@ -1,4 +1,5 @@
 const { Router } = require("express")
+const { check, validationResult } = require("express-validator")
 const GalleryItem = require("../models/Gallery")
 const auth = require("../middlewares/auth.middleware")
 const router = Router()
@@ -24,9 +25,27 @@ router.get(
 
 router.post(
     '/',
+    [
+        check("title", "No title provided")
+            .not().isEmpty(),
+        check("description", "No description provided")
+            .not().isEmpty(),
+        check("price", "Wrong price")
+            .isNumeric()
+            .not().isEmpty()
+    ],
     auth,
     async (req, res) => {
     try {
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array()[0],
+                message: `Incorrect form data ${errors.array()[0].msg}`
+            })
+        }
 
         const {imageAsString, ...data} = req.body
 
@@ -60,8 +79,26 @@ router.post(
 router.put(
     '/',
     auth,
+    [
+        check("title", "No title provided")
+            .not().isEmpty(),
+        check("description", "No description provided")
+            .not().isEmpty(),
+        check("price", "Wrong price")
+            .isNumeric()
+            .not().isEmpty()
+    ],
     async (req, res) => {
     try {
+
+        const errors = validationResult(req)
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array()[0],
+                message: `Incorrect form data ${errors.array()[0].msg}`
+            })
+        }
 
         const {id, imageAsString, ...data} = req.body
 
