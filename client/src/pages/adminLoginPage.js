@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useContext} from "react";
+import {motion} from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import { toast, Slide } from "react-toastify"
@@ -61,36 +62,45 @@ export const AdminLoginPage = () => {
 
     return (
         <>
-            <form className="admin-login-form">
-                <label className="input-label" htmlFor="login">Login</label>
-                <input
-                className="input"
-                id="login"
-                name="login"
-                type="text"
-                value={form.login}
-                onChange={changeHandler}
-                required
-                />
-                <label className="input-label" htmlFor="password">Password</label>
-                <input
-                className="input"
-                id="password"
-                name="password"
-                type="password"
-                value={form.password}
-                onChange={changeHandler}
-                required
-                />
-                <button 
-                disabled={loading ? true : false} 
-                className="action-btn" 
-                onClick={loginHandler}
-                type="submit"
-                >
-                Login
-                </button>
-            </form>
+            <motion.div
+            initial = {{x: "-100%", height: 0}}
+            animate = {{x: 0, height: "100%", transition: {duration: 0.5, delay: 0.5}}}
+            exit = {{x: "100%", height: 0, transition: {duration: 0.5}}}
+            >
+                <div className="page-container">
+                    <form className="admin-login-form">
+                        <label className="input-label" htmlFor="login">Login</label>
+                        <input
+                        className="input"
+                        id="login"
+                        name="login"
+                        type="text"
+                        value={form.login}
+                        onChange={changeHandler}
+                        required
+                        />
+                        <label className="input-label" htmlFor="password">Password</label>
+                        <input
+                        className="input"
+                        id="password"
+                        name="password"
+                        type="password"
+                        value={form.password}
+                        onChange={changeHandler}
+                        autoComplete="false"
+                        required
+                        />
+                        <button 
+                        disabled={loading ? true : false} 
+                        className="action-btn" 
+                        onClick={loginHandler}
+                        type="submit"
+                        >
+                        Login
+                        </button>
+                    </form>
+                </div>
+            </motion.div>
         </>
     )
 }

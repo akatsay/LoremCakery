@@ -27,31 +27,29 @@ export const ReviewsList = ({reviews}) => {
 
     return (
         <>
-            <div className="reviews-list-container">
-                {currentReviews.map((reviewItem, i) => 
-                        <Review
-                            key={reviewItem._id}
-                            id = {reviewItem._id}
-                            rating = {reviewItem.rating}
-                            name = {reviewItem.name}
-                            comment = {reviewItem.comment}
-                            date = {reviewItem.date}
-                        />
-                )}
-                <div className="link-buttons-wrapper">
-                    <button
-                    className={(firstReviewIndex <= 0) ? "hidden" : ""}
-                    onClick={handleShowPrevious}
-                    >
-                    {"<-"} Show previous
-                    </button>
-                    <button 
-                    className={(firstReviewIndex >= (reviews.length - amountOfReviewsOnPage)) ? "hidden" : ""}
-                    onClick={handleShowMore}
-                    >
-                    Show more{"->"}
-                    </button>
-                </div>
+            {currentReviews.map((reviewItem, i) => 
+                    <Review
+                        key={reviewItem._id}
+                        id = {reviewItem._id}
+                        rating = {reviewItem.rating}
+                        name = {reviewItem.name}
+                        comment = {reviewItem.comment}
+                        date = {reviewItem.date}
+                    />
+            )}
+            <div className="link-buttons-wrapper">
+                <button
+                className={(firstReviewIndex <= 0) ? "hidden" : ""}
+                onClick={handleShowPrevious}
+                >
+                {"<-"} Show previous
+                </button>
+                <button 
+                className={(firstReviewIndex >= (reviews.length - amountOfReviewsOnPage)) ? "hidden" : ""}
+                onClick={handleShowMore}
+                >
+                Show more{"->"}
+                </button>
             </div>
         </>
     )

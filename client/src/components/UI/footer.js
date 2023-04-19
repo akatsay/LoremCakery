@@ -1,6 +1,10 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom'
 
 export const Footer = () => {
+
+    const navigate = useNavigate()
+
     return(
         <footer>
             <div className="footer-block">
@@ -12,12 +16,18 @@ export const Footer = () => {
             <div className="footer-block">
                 <h3>Follow us:</h3>
                 <i 
-                className="fa fa-solid fa-cake-candles"
+                className="fa fa-solid fa-github"
                 onClick={() => {
                         window.open('https://github.com/akatsay/LoremCakery', '_blank');
                     }}
-                >
-                </i>
+                />
+                <i 
+                className="fa fa-solid fa-cake-candles"
+                onClick={() => {
+                        navigate("/adminLogin")
+                    }}
+                title="hello admin :)"
+                />
                 <i className="fa fa-brands fa-instagram"></i>
                 <i className="fa fa-brands fa-facebook"></i>
                 <i className="fa fa-telegram" aria-hidden="true"></i>

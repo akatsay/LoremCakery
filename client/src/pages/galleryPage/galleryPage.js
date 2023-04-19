@@ -5,6 +5,7 @@ import { useHttp } from "../../hooks/httpHook"
 
 import GalleryItem from "./galleryItem";
 import CreateAreaModal from './createAreaModal'
+import { SmallLoader } from '../../components/loaders/smallLoader';
 
 export const GalleryPage = () => {
 
@@ -37,6 +38,7 @@ export const GalleryPage = () => {
                 exit = {{x: "100%", height: 0, transition: {duration: 0.5}}}
             >
                 <div className="page-container">
+                    {loading ? <SmallLoader /> :
                     <div className="gallery-items-container">
                         {isAdmin && 
                         <div
@@ -47,7 +49,7 @@ export const GalleryPage = () => {
                             <p>Add Item</p>
                         </div>    
                         }
-                        { items && items.map((item) => 
+                        {items && items.map((item) => 
                             <GalleryItem 
                                 key={item._id}
                                 id={item._id}
@@ -59,6 +61,7 @@ export const GalleryPage = () => {
                             />
                         )}
                     </div>
+                    }   
                 </div>
             </motion.div>
             <CreateAreaModal 

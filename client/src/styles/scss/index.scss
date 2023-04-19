@@ -20,6 +20,8 @@ $cambridge-blue: #8BA796;
 @import "gallery.scss";
 @import "galleryItemModal.scss";
 @import "AdminPanel.scss";
+@import "loaders.scss";
+
 
 * {
     font-family: 'Fragment Mono', monospace;
@@ -48,6 +50,7 @@ $cambridge-blue: #8BA796;
 }
 
 .page-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;

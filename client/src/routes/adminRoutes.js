@@ -9,7 +9,7 @@ import { ReviewsPage } from '../pages/reviewsPage/reviewsPage'
 import { AdminPanelPage } from '../pages/adminPanelPage'
 import { AdminLoginPage } from '../pages/adminLoginPage'
 
-export const AdminRoutes = () => {
+const AdminRoutes = () => {
 
     return (
         <Routes>
@@ -25,3 +25,5 @@ export const AdminRoutes = () => {
         </Routes>
     )
 }
+
+export default AdminRoutes

@@ -47,7 +47,7 @@ export const ContactPage = () => {
                         title="map"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2173.7959649744043!2d-73.99423419012491!3d40.58271523834142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c245b77cea447b%3A0x6cf866f41971aada!2sConey%20Island%20Yellow%20Submarine!5e0!3m2!1sen!2sus!4v1676781156032!5m2!1sen!2sus" 
                         allowFullScreen="" 
-                        loading="lazy" 
+                        loading="eager" 
                         referrerPolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>

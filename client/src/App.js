@@ -11,6 +11,7 @@ import { useRoutes } from "./routes/routes"
 
 import { Header } from "./components/UI/header"
 import { Footer } from "./components/UI/footer"
+import { AppLoader } from "./components/loaders/appLoader"
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
 
   if (!ready) {
     return (
-      <>Loading...</>
+      <AppLoader />
     )
   }
 

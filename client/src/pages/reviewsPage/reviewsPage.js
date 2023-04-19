@@ -4,12 +4,13 @@ import { useHttp } from "../../hooks/httpHook";
 
 import { ReviewsList } from "./reviewsList";
 import { ReviewCreateArea } from "./reviewCreateArea";
+import { SmallLoader } from "../../components/loaders/smallLoader";
 
 export const ReviewsPage = () => {
 
     const [reviews, setReviews] = useState([])
 
-    const { request } = useHttp()
+    const { request, loading } = useHttp()
 
     const fetchReviews = useCallback( async () => {
         try {
@@ -37,7 +38,9 @@ export const ReviewsPage = () => {
             <div className="page-container">
                 <h2 className="page-title">Our reviews</h2>
                 <ReviewCreateArea onCreateReviewUpdateList={fetchReviews} />
-                <ReviewsList reviews={reviews} />
+                <div className="reviews-list-container">
+                {loading ? <SmallLoader /> : <ReviewsList reviews={reviews} />}   
+                </div>
             </div>
         </motion.div>
     )
