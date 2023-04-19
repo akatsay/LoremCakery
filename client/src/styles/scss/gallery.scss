@@ -8,6 +8,26 @@
     background-color: $ctcl;
 }
 
+.sort-settings {
+    margin: 30px auto;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    & .fa {
+        cursor: pointer;
+        font-size: 1.5rem;
+        margin: 15px;
+        transition: transform 0.2s ease-in-out;
+        color: $hdcl-2;
+        &:hover {
+            transform: scale(1.2)
+        }
+    }
+}
+
 .gallery-items-container {
     display: flex;
     justify-content: center;
