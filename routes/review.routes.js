@@ -49,7 +49,7 @@ router.post(
 
         const year = currentDate.getFullYear()
         const month = currentDate.toLocaleString('EN', { month: 'long' })
-        const day = currentDate.getUTCDay()
+        const day = currentDate.getUTCDate()
 
         const dateString = `${month} ${day} ${year}`
 
