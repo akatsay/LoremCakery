@@ -70,4 +70,19 @@ router.post(
     }
 })
 
+// router.delete(
+//     '/',
+//     async (req, res) => {
+//     try {
+
+//         const reviews = await Review.deleteMany()
+
+//         res.status(200).json({message: "all reviews deleted :)"})
+
+//     } catch (e) {
+//         console.log(e)
+//         res.status(500).json({ message: " something went wrong on the server... " })
+//     }
+// })
+
 module.exports = router

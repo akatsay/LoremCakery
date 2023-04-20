@@ -5,10 +5,10 @@ const path = require("path")
 const fs = require('fs')
 const https = require('https')
 
-// const privateKey  = fs.readFileSync("").toString()
-// const certificate = fs.readFileSync("").toString()
+const privateKey  = fs.readFileSync('_.loremcakery.org_private_key.key').toString()
+const certificate = fs.readFileSync('loremcakery.org_ssl_certificate.cer').toString()
 
-// const credentials = {key: privateKey, cert: certificate}
+const credentials = {key: privateKey, cert: certificate}
 
 const app = express()
 
@@ -36,12 +36,13 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const PORT = process.env.NODE_ENV == 'production' ? process.env.PROD_PORT_HTTPS : process.env.DEV_PORT
+const httpPort = process.env.NODE_ENV == 'production' ? process.env.PROD_PORT : 5001
 
 async function start() {
     try {
         await mongoose.connect(process.env.MONGO_URL)
-        // await https.createServer(credentials, app).listen(PORT)
-        app.listen(PORT, () => console.log(`App has been started on port ${PORT}...`))
+        await https.createServer(credentials, app).listen(PORT)
+        app.listen(httpPort, () => console.log(`App has been started on port ${PORT}, ${httpPort}...`))
     } catch (e) {
         console.log('Server Error', e.message)
         process.exit(1)
