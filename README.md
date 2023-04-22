@@ -3,7 +3,7 @@
 
 ### Features
 
-* Contact form after submitting which an email is sent to email of the owner and data is saved to mongodb.
+* Contact form after submitting which an email is sent to email of the owner and data is saved to mongodb
 * Review cards
 * Admin routes, that enable authorized admin user to add, edit and delete items in the gallery page
 
@@ -16,7 +16,7 @@
   - JWT token and Bearer authentication.
   - MongoDB
   - Cloudinary API for storing images for product items in the gallery
-* Frontend
+* Frontend:
   - React
   - YUP for forms validation
   - SCSS
