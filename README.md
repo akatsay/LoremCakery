@@ -22,10 +22,10 @@
   - SCSS
 
 ### Admin usage
-
-to access admin functionality
 ![image](https://user-images.githubusercontent.com/94932986/233792318-2b841976-0011-40a0-baab-3405b351ed28.png)
 
+
+#### to access admin functionality:
 * scroll down to footer
 * tap the cake icon
 * sign in with following credentials: 
