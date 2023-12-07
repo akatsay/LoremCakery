@@ -8,6 +8,7 @@ import { ContactPage } from '../pages/contactPage'
 import { GalleryPage } from '../pages/galleryPage/galleryPage'
 import { ReviewsPage } from '../pages/reviewsPage/reviewsPage'
 import { AdminLoginPage } from '../pages/adminLoginPage'
+import { UserLoginPage } from "../pages/UserLoginPage";
 
 export const UserRoutes = () => {
     const location = useLocation()
@@ -19,6 +20,7 @@ export const UserRoutes = () => {
                 <Route path ="/contact" exact element={<ContactPage />} />
                 <Route path ="/gallery" exact element={<GalleryPage />} />
                 <Route path ="/reviews" exact element={<ReviewsPage />} />
+                <Route path ="/login" exact element={<UserLoginPage />} />
                 <Route path ="/adminLogin" exact element={<AdminLoginPage />} />
                 <Route path="/" element={<Navigate to="/home" />} />
                 <Route path="*" element={<Navigate replace to="/" />}  />

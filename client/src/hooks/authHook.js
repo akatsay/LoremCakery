@@ -21,6 +21,14 @@ export const useAuth = () => {
         sessionStorage.removeItem(storageName)
     }, [])
 
+    const adminLogin = useCallback((jwtToken) => {
+        setToken(jwtToken + "adm")
+
+        sessionStorage.setItem(storageName, JSON.stringify({
+            token: jwtToken + "adm"
+        }))
+    })
+
     useEffect(() => {
         const data = JSON.parse(sessionStorage.getItem(storageName))
 

@@ -4,6 +4,7 @@ import { toast, Slide } from "react-toastify"
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from 'react-router-dom'
 import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
+import {Cart} from "./cart";
 
 export const Header = () => {
 
@@ -39,7 +40,8 @@ export const Header = () => {
             <h1>Lorem Cakery</h1>
             <i className="fa-solid fa-cake-candles"></i>
             </div>
-            <nav className="navbar">
+            <nav className="navbar" style={{display: "flex", flexDirection: "row"}}>
+                <Cart />
                 <div className={`dropdown`} ref={dropdownRef}>
                     <button className={`dropdown-trigger ${open ? "active" : ""}`} onClick={handleOpen}>
                     <span className="line line-1"></span>
@@ -99,12 +101,34 @@ export const Header = () => {
                         </li>
 
                         {
-                            auth.isAdmin 
+                            auth.token ?
+                                <li
+                                    className="menu-item admin-menu-item"
+                                    onClick={() => {
+                                        navigate("/home")
+                                        handleOpen()
+                                        logoutHandler()
+                                    }}
+                                >
+                                    Log Out
+                                </li>
+                                :
+                                <li
+                                    className="menu-item admin-menu-item"
+                                    onClick={() => {
+                                        navigate("/login")
+                                        handleOpen()
+                                    }}
+                                >
+                                    Login
+                                </li>
+                        }
 
-                            ?
+                        {
+                            auth.isAdmin &&
 
                             <div className="admin-nav-items-wrapper">
-                                <li 
+                                <li
                                 className="menu-item admin-menu-item" 
                                 onClick={() => {
                                 navigate("/adminPanel")
@@ -113,22 +137,7 @@ export const Header = () => {
                                 >
                                 Admin Panel
                                 </li>
-
-                                <li 
-                                className="menu-item admin-menu-item" 
-                                onClick={() => {
-                                navigate("/home")
-                                handleOpen()
-                                logoutHandler()
-                                }}
-                                >
-                                Log Out
-                                </li>
                             </div>
-
-                            :
-
-                            null
                         }
 
                     </ul>

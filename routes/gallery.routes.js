@@ -23,6 +23,35 @@ router.get(
     }
 })
 
+router.post('/getMany', async (req, res) => {
+    // Example function to find products by an array of IDs
+    console.log("getMany")
+    const findProductsByIds = async (productIds) => {
+        try {
+            const products = await GalleryItem.find();
+            return products;
+        } catch (error) {
+            console.error('Error finding products:', error);
+            throw error;
+        }
+    };
+
+    try {
+        const itemIds = req.body;
+
+        // Ensure that itemIds is an array
+        if (!Array.isArray(itemIds)) {
+            return res.status(400).json({ message: 'Invalid request. Expected an array of item IDs.' });
+        }
+
+        const galleryItems = await findProductsByIds(itemIds);
+        res.status(200).json(galleryItems);
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ message: 'Something went wrong on the server...' });
+    }
+});
+
 router.post(
     '/',
     [
