@@ -5,13 +5,14 @@ import { AuthContext } from "../../context/authContext";
 import { useNavigate } from 'react-router-dom'
 import { useDetectOutsideClick } from "../../hooks/useDetectOutsideClick";
 import {Cart} from "./cart";
+import {useCart} from "../../context/CartProvider";
 
 export const Header = () => {
 
     const navigate = useNavigate()
 
     const auth = useContext(AuthContext)
-
+    const { clearCart } = useCart()
     const dropdownRef = useRef(null)
     
     const [open, setOpen] = useDetectOutsideClick(dropdownRef, false);

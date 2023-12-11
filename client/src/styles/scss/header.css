@@ -1,0 +1,119 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  background-color: #201D35;
+  width: 100%;
+  min-height: 70px;
+}
+.header .brand-title * {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  display: inline-block;
+}
+@media (min-width: 380px) {
+  .header .brand-title * {
+    font-size: 2rem;
+  }
+}
+.header i {
+  color: #FFE4AD;
+}
+.header .navbar, .header .dropdown {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: 48px;
+}
+.header .navbar .fa, .header .dropdown .fa {
+  font-size: 2rem;
+  color: white;
+}
+.header .dropdown-trigger {
+  cursor: pointer;
+  font-size: 3rem;
+  height: 100%;
+  transition: transform 0.2s ease-in-out 0.2s;
+}
+.header .dropdown-trigger * {
+  cursor: pointer;
+}
+.header .dropdown-trigger span {
+  display: block;
+  width: 45px;
+  height: 4px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  position: relative;
+  background: white;
+  border-radius: 3px;
+  z-index: 1;
+}
+.header .dropdown-trigger span:last-of-type {
+  margin-bottom: 0;
+}
+.header .dropdown-trigger .line-1 {
+  transition: transform 0.2s ease-in-out;
+}
+.header .dropdown-trigger .line-2 {
+  transition: transform 0.2s ease-in-out;
+}
+.header .dropdown-trigger .line-3 {
+  transition: transform 0.2s ease-in-out;
+}
+.header .dropdown-trigger.active {
+  transform: rotate(45deg);
+}
+.header .dropdown-trigger.active .line-1 {
+  transform: translateY(14px);
+}
+.header .dropdown-trigger.active .line-2 {
+  transform: rotate(90deg);
+}
+.header .dropdown-trigger.active .line-3 {
+  transform: translateY(-14px);
+}
+.header .dropdown-menu {
+  position: absolute;
+  top: 65px;
+  right: -290px;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  background-color: #2C2541;
+  box-shadow: 8px 8px 16px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+}
+.header .dropdown-menu.show {
+  transform: translateX(-305px);
+}
+.header .dropdown-menu .menu-item {
+  margin: 1.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+.header .dropdown-menu .menu-item::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transform-origin: bottom right;
+  background-color: white;
+  transition: transform 0.35s ease-in-out;
+}
+.header .dropdown-menu .menu-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/*# sourceMappingURL=header.css.map */

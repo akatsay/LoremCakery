@@ -5,19 +5,21 @@ const storageName = "userData"
 export const useAuth = () => {
 
     const [token, setToken] = useState(null)
-
+    const [userName, setUserName] = useState(null);
     const [ready, setReady] = useState(false)
 
-    const login = useCallback((jwtToken) => {
+    const login = useCallback((jwtToken, userNameP) => {
         setToken(jwtToken)
-
+        setUserName(userNameP)
         sessionStorage.setItem(storageName, JSON.stringify({
-            token: jwtToken
+            token: jwtToken,
+            userName: userNameP
         }))
     }, [])
 
     const logout = useCallback(() => {
         setToken(null)
+        setUserName(null)
         sessionStorage.removeItem(storageName)
     }, [])
 
@@ -25,20 +27,20 @@ export const useAuth = () => {
         setToken(jwtToken + "adm")
 
         sessionStorage.setItem(storageName, JSON.stringify({
-            token: jwtToken + "adm"
+            token: jwtToken + "adm",
         }))
     })
 
     useEffect(() => {
         const data = JSON.parse(sessionStorage.getItem(storageName))
 
-        if (data && data.token) {
-            login(data.token, data.userId, data.userName, data.userEmail)
+        if (data && data.token && data.userName) {
+            login(data.token, data.userName)
         }
 
         setReady(true)
 
-    }, [login])
+    }, [login, userName])
 
-    return {login, logout, token, ready}
+    return {login, adminLogin, logout, token, ready, userName}
 }

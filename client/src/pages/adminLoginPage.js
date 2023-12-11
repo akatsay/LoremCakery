@@ -24,7 +24,7 @@ export const AdminLoginPage = () => {
         e.preventDefault()
         try {
             const data = await request("api/admin", "post", {...form})
-            auth.loginAdmin(data.token)
+            auth.adminLogin(data.token)
             navigate("/adminPanel")
             toast.success(data.message, {
                 style: {backgroundColor: "#555", color: "white"},
@@ -39,7 +39,9 @@ export const AdminLoginPage = () => {
                 transition: Slide,
                 });
 
-        } catch (e) {}
+        } catch (e) {
+            console.log(e)
+        }
     }
 
     useEffect(() => {

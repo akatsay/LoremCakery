@@ -22,6 +22,8 @@ const GalleryItem = ({id, imageSrc, title, description, price, fetchItems}) => {
             <div className='gallery-item-info'>
                 <h2 className="title">{title}</h2>
                 <p className="content">{description}</p>
+                {
+                    !isAdmin &&
                     <i
                         style={{
                             cursor: "pointer",
@@ -37,6 +39,7 @@ const GalleryItem = ({id, imageSrc, title, description, price, fetchItems}) => {
                             console.log("added")
                         }}
                     />
+                }
                 <i className='price'>{"$" + price}</i>
             </div>
         </div>

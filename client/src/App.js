@@ -16,7 +16,7 @@ import {CartProvider} from "./context/CartProvider";
 
 function App() {
 
-  const {login, logout, token, ready} = useAuth()
+  const {login, adminLogin, logout, token, ready, userName} = useAuth()
   const isAdmin = token?.slice(-3) === "adm"
   const routes = useRoutes(isAdmin)
 
@@ -27,8 +27,8 @@ function App() {
   }
 
   return (
-      <CartProvider>
-        <AuthContext.Provider value={{token, login, logout, isAdmin}}>
+        <AuthContext.Provider value={{token, login, adminLogin, logout, isAdmin, userName}}>
+          <CartProvider>
           <Router>
             <div className="container">
               <Header />
@@ -41,8 +41,8 @@ function App() {
               />
             </div>
           </Router>
+          </CartProvider>
         </AuthContext.Provider>
-      </CartProvider>
   )
 }
 

@@ -1,3 +1,7 @@
+$hdcl: #201D35;
+$peach: #FFE4AD;
+$hdcl-2: #2C2541;
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -22,12 +26,19 @@
             color: $peach
         }
         & .navbar, .dropdown {
-            display: block;
+            cursor: pointer;
+            display: flex;
+            flex-direction: row;
             position: relative;
             height: 48px;
+            & .fa {
+                font-size: 2rem;
+                color: white
+            }
         }
         & .dropdown-trigger {
             cursor: pointer;
+            font-size: 3rem;
             height: 100%;
             transition: transform 0.2s ease-in-out 0.2s;
             & * {

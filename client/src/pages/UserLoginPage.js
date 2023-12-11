@@ -24,7 +24,7 @@ export const UserLoginPage = () => {
         e.preventDefault()
         try {
             const data = await request("api/user", "post", {...form})
-            auth.login(data.token)
+            auth.login(data.token, form.login)
             navigate("/gallery")
             toast.success(data.message, {
                 style: {backgroundColor: "#555", color: "white"},

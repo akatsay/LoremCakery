@@ -24,14 +24,13 @@ router.get(
 })
 
 router.post('/getMany', async (req, res) => {
-    // Example function to find products by an array of IDs
-    console.log("getMany")
-    const findProductsByIds = async (productIds) => {
+    console.log("getmany")
+    const findProductById = async (productId) => {
         try {
-            const products = await GalleryItem.find();
-            return products;
+            const product = await GalleryItem.findById(productId);
+            return product;
         } catch (error) {
-            console.error('Error finding products:', error);
+            console.error(`Error finding product with ID ${productId}:`, error);
             throw error;
         }
     };
@@ -44,7 +43,9 @@ router.post('/getMany', async (req, res) => {
             return res.status(400).json({ message: 'Invalid request. Expected an array of item IDs.' });
         }
 
-        const galleryItems = await findProductsByIds(itemIds);
+        // Query each item individually
+        const galleryItems = await Promise.all(itemIds.map(findProductById));
+
         res.status(200).json(galleryItems);
     } catch (e) {
         console.error(e);
